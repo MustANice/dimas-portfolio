@@ -1,12 +1,5 @@
-import { Github, Instagram, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
-
-const socials = [
-  { label: "GitHub", href: "https://github.com/", icon: Github },
-  { label: "LinkedIn", href: "https://www.linkedin.com/", icon: Linkedin },
-  { label: "Instagram", href: "https://www.instagram.com/", icon: Instagram },
-  { label: "Email", href: "mailto:hello@dimas.dev", icon: Mail },
-];
+import { socialLinks } from "@/lib/site-data";
 
 export function Footer() {
   return (
@@ -19,7 +12,7 @@ export function Footer() {
           </p>
         </div>
         <div className="flex items-center gap-3">
-          {socials.map((social) => {
+          {socialLinks.map((social) => {
             const Icon = social.icon;
             return (
               <Link
@@ -35,7 +28,7 @@ export function Footer() {
             );
           })}
         </div>
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-slate-400">
           Copyright {new Date().getFullYear()} Dimas. All rights reserved.
         </p>
       </div>

@@ -10,7 +10,7 @@ import "./globals.css";
 import { SiteBackground } from "@/components/layout/site-background";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dimas.dev"),
+  metadataBase: new URL("https://dimas.dindustries.my.id"),
   title: {
     default: "Dimas | Cybersecurity & AI Portfolio",
     template: "%s | Dimas",
@@ -32,10 +32,34 @@ export const metadata: Metadata = {
     title: "Dimas | Cybersecurity & AI Portfolio",
     description:
       "Modern personal portfolio for an informatics student, cybersecurity enthusiast, and AI learner.",
-    url: "https://dimas.dev",
+    url: "https://dimas.dindustries.my.id",
     siteName: "Dimas Portfolio",
     locale: "id_ID",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Dimas | Cybersecurity & AI Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dimas | Cybersecurity & AI Portfolio",
+    description:
+      "Portfolio Dimas, mahasiswa informatika yang fokus pada cybersecurity, AI, web development, dan teknologi modern.",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   robots: {
     index: true,

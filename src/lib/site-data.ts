@@ -51,10 +51,10 @@ export type TimelineItem = {
 };
 
 export const socialLinks: SocialLink[] = [
-  { label: "GitHub", href: "https://github.com/", icon: Github },
+  { label: "GitHub", href: "https://github.com/MustANice", icon: Github },
   { label: "LinkedIn", href: "https://www.linkedin.com/", icon: Linkedin },
   { label: "Instagram", href: "https://www.instagram.com/", icon: Instagram },
-  { label: "Email", href: "mailto:hello@dimas.dev", icon: Mail },
+  { label: "Email", href: "mailto:adhi@dindustries.my.id", icon: Mail },
 ];
 
 export const skills: Skill[] = [
@@ -76,7 +76,7 @@ export const projects: Project[] = [
     description: "Game project sederhana dengan konsep arcade modern.",
     stack: ["JavaScript", "Canvas", "Game Logic"],
     icon: Gamepad2,
-    href: "#contact",
+    href: "https://github.com/MustANice",
     visual: "arcade",
   },
   {
@@ -84,7 +84,7 @@ export const projects: Project[] = [
     description: "Project IoT monitoring dan keamanan rumah menggunakan Arduino.",
     stack: ["Arduino", "IoT", "Security"],
     icon: Home,
-    href: "#contact",
+    href: "https://github.com/MustANice/smartoil",
     visual: "iot",
   },
   {
@@ -92,7 +92,7 @@ export const projects: Project[] = [
     description: "Dashboard monitoring keamanan jaringan dengan tampilan modern.",
     stack: ["Next.js", "Charts", "Network"],
     icon: Radar,
-    href: "#contact",
+    href: "https://github.com/MustANice/dimas-portfolio",
     visual: "security",
   },
   {
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     description: "Eksperimen AI assistant berbasis web modern.",
     stack: ["AI", "React", "API"],
     icon: Bot,
-    href: "#contact",
+    href: "https://github.com/MustANice",
     visual: "ai",
   },
 ];

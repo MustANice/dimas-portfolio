@@ -49,6 +49,21 @@ export function Navbar() {
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
       <nav
@@ -98,6 +113,7 @@ export function Navbar() {
           className="grid size-10 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-white transition-colors hover:bg-white/[0.12] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 lg:hidden"
           aria-label={isOpen ? "Tutup menu" : "Buka menu"}
           aria-expanded={isOpen}
+          aria-controls="mobile-nav-menu"
           onClick={() => setIsOpen((current) => !current)}
         >
           {isOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
@@ -105,9 +121,14 @@ export function Navbar() {
       </nav>
 
       <div
+        id="mobile-nav-menu"
+        aria-hidden={!isOpen}
+        inert={!isOpen ? true : undefined}
         className={cn(
           "mx-auto mt-3 max-w-6xl overflow-hidden rounded-3xl border border-white/10 bg-slate-950/85 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl transition-all duration-300 lg:hidden",
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 border-transparent opacity-0",
+          isOpen
+            ? "max-h-96 opacity-100"
+            : "max-h-0 border-transparent opacity-0 pointer-events-none",
         )}
       >
         <div className="grid gap-1 p-3">
@@ -118,6 +139,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
+                tabIndex={isOpen ? 0 : -1}
                 className={cn(
                   "rounded-2xl px-4 py-3 text-sm font-medium text-slate-300 transition-colors hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300",
                   isActive && "bg-cyan-300/[0.12] text-cyan-100",

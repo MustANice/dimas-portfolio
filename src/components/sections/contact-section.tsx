@@ -8,8 +8,8 @@ import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 const contactLinks = [
-  { label: "Email", href: "mailto:hello@dimas.dev", value: "hello@dimas.dev", icon: Mail },
-  { label: "GitHub", href: "https://github.com/", value: "github.com", icon: Github },
+  { label: "Email", href: "mailto:adhi@dindustries.my.id", value: "adhi@dindustries.my.id", icon: Mail },
+  { label: "GitHub", href: "https://github.com/MustANice", value: "github.com/MustANice", icon: Github },
   { label: "LinkedIn", href: "https://www.linkedin.com/", value: "linkedin.com", icon: Linkedin },
 ];
 
@@ -23,7 +23,7 @@ export function ContactSection() {
     const email = String(formData.get("email") ?? "");
     const message = String(formData.get("message") ?? "");
     const body = encodeURIComponent(`${message}\n\nFrom: ${name} <${email}>`);
-    window.location.href = `mailto:hello@dimas.dev?subject=Portfolio%20Contact&body=${body}`;
+    window.location.href = `mailto:adhi@dindustries.my.id?subject=Portfolio%20Contact&body=${body}`;
     setStatus("Membuka aplikasi email untuk mengirim pesan.");
   }
 

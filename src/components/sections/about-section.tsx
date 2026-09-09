@@ -73,7 +73,7 @@ export function AboutSection() {
                     key={label}
                     className="rounded-2xl border border-white/10 bg-white/[0.05] p-4"
                   >
-                    <p className="text-xs font-medium uppercase text-slate-500">{label}</p>
+                    <p className="text-xs font-medium uppercase text-slate-400">{label}</p>
                     <p className="mt-2 text-sm font-semibold text-white">{value}</p>
                   </div>
                 ))}

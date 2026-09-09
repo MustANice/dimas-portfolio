@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowDown, Download, Mail, Rocket, ShieldCheck, Sparkles } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -136,24 +137,26 @@ export function HeroSection() {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-[-18px] rounded-full border border-dashed border-cyan-300/20"
+            className="absolute inset-[-10px] sm:inset-[-18px] rounded-full border border-dashed border-cyan-300/20"
           />
           <motion.div
             animate={{ rotate: -360 }}
             transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-[-36px] rounded-full border border-dashed border-emerald-300/10"
+            className="absolute inset-[-20px] sm:inset-[-36px] rounded-full border border-dashed border-emerald-300/10"
           />
 
           {/* Photo container */}
           <div className="relative">
             {/* Glowing border ring */}
             <div className="absolute -inset-[3px] rounded-full bg-gradient-to-br from-cyan-300 via-emerald-300 to-cyan-500 opacity-60 blur-[2px]" />
-            <div className="relative overflow-hidden rounded-full border-[3px] border-white/10 shadow-[0_0_60px_rgba(34,211,238,0.25)]" style={{ width: 300, height: 300 }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="relative size-[220px] min-[360px]:size-[260px] sm:size-72 lg:size-[300px] overflow-hidden rounded-full border-[3px] border-white/10 shadow-[0_0_60px_rgba(34,211,238,0.25)]">
+              <Image
                 src="/dimas-photo.jpg"
                 alt="Foto formal Dimas"
-                className="h-full w-full object-cover object-top"
+                fill
+                priority
+                sizes="(max-width: 360px) 220px, (max-width: 640px) 260px, (max-width: 1024px) 288px, 300px"
+                className="object-cover object-top"
               />
               {/* Subtle overlay gradient at bottom */}
               <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-slate-950/60 to-transparent" />
@@ -165,10 +168,10 @@ export function HeroSection() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="absolute -right-4 top-6 flex items-center gap-2 rounded-full border border-cyan-300/20 bg-slate-900/90 px-3 py-2 shadow-lg backdrop-blur-md"
+            className="absolute right-0 sm:-right-4 top-3 sm:top-6 flex items-center gap-1.5 sm:gap-2 rounded-full border border-cyan-300/20 bg-slate-900/90 px-2.5 py-1.5 sm:px-3 sm:py-2 shadow-lg backdrop-blur-md"
           >
             <span className="size-2 animate-pulse rounded-full bg-emerald-400" />
-            <span className="text-xs font-semibold text-cyan-100">Open to work</span>
+            <span className="text-[11px] sm:text-xs font-semibold text-cyan-100 whitespace-nowrap">Open to work</span>
           </motion.div>
 
           {/* Floating badge - bottom left */}
@@ -176,10 +179,10 @@ export function HeroSection() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.9, duration: 0.6 }}
-            className="absolute -left-4 bottom-8 flex items-center gap-2 rounded-full border border-emerald-300/20 bg-slate-900/90 px-3 py-2 shadow-lg backdrop-blur-md"
+            className="absolute left-0 sm:-left-4 bottom-5 sm:bottom-8 flex items-center gap-1.5 sm:gap-2 rounded-full border border-emerald-300/20 bg-slate-900/90 px-2.5 py-1.5 sm:px-3 sm:py-2 shadow-lg backdrop-blur-md"
           >
-            <ShieldCheck size={14} className="text-emerald-300" />
-            <span className="text-xs font-semibold text-slate-200">Cybersecurity</span>
+            <ShieldCheck size={14} className="text-emerald-300 shrink-0" />
+            <span className="text-[11px] sm:text-xs font-semibold text-slate-200 whitespace-nowrap">Cybersecurity</span>
           </motion.div>
 
           {/* Floating badge - bottom right */}
@@ -187,10 +190,10 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
-            className="absolute -bottom-4 right-6 flex items-center gap-2 rounded-full border border-white/10 bg-slate-900/90 px-3 py-2 shadow-lg backdrop-blur-md"
+            className="absolute -bottom-3 sm:-bottom-4 right-2 sm:right-6 flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/10 bg-slate-900/90 px-2.5 py-1.5 sm:px-3 sm:py-2 shadow-lg backdrop-blur-md"
           >
-            <Sparkles size={14} className="text-yellow-300" />
-            <span className="text-xs font-semibold text-slate-200">AI Learner</span>
+            <Sparkles size={14} className="text-yellow-300 shrink-0" />
+            <span className="text-[11px] sm:text-xs font-semibold text-slate-200 whitespace-nowrap">AI Learner</span>
           </motion.div>
         </motion.div>
       </div>
