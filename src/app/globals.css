@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-background: #030407;
+  --color-foreground: #f8fafc;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(0, 229, 255, 0.2), transparent 32rem),
+    linear-gradient(180deg, #030407 0%, #050813 42%, #030407 100%);
+  color: #f8fafc;
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.35);
+  color: #ffffff;
+}
+
+.ambient-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 82%, transparent);
+}
+
+.ambient-flow {
+  background:
+    linear-gradient(115deg, transparent 4%, rgba(0, 229, 255, 0.1) 22%, transparent 42%),
+    linear-gradient(245deg, transparent 12%, rgba(16, 185, 129, 0.08) 38%, transparent 62%),
+    linear-gradient(180deg, transparent, rgba(59, 130, 246, 0.08), transparent);
+  background-size: 220% 220%;
+  filter: blur(34px);
+  opacity: 0.9;
+  animation: ambient-flow 18s ease-in-out infinite alternate;
+}
+
+.scanline {
+  background: linear-gradient(180deg, transparent, rgba(34, 211, 238, 0.1), transparent);
+  height: 24rem;
+  transform: translateY(-100%);
+  animation: scanline 12s linear infinite;
+}
+
+.glass-panel {
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.76), rgba(3, 7, 18, 0.52));
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+  backdrop-filter: blur(22px);
+}
+
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.7), rgba(16, 185, 129, 0.28), rgba(148, 163, 184, 0.08));
+  content: "";
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.noise-texture {
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 2px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 3px);
+  opacity: 0.22;
+}
+
+.typing-caret::after {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 0.15rem;
+  translate: 0 0.16em;
+  background: #22d3ee;
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.9);
+  content: "";
+  animation: caret 1s steps(1) infinite;
+}
+
+@keyframes ambient-flow {
+  from {
+    background-position: 0% 20%;
+    transform: translate3d(-2%, -1%, 0) scale(1.02);
+  }
+  to {
+    background-position: 100% 80%;
+    transform: translate3d(2%, 1%, 0) scale(1.06);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(220%);
+  }
+}
+
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

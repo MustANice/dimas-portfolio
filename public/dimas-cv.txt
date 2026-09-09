@@ -1,0 +1,11 @@
+Dimas Adhi Prasetyo
+Informatics Student | Cybersecurity Enthusiast | AI Learner
+
+Summary
+Saya mahasiswa informatika yang tertarik pada cybersecurity, AI, web development, dan teknologi modern.
+
+Skills
+JavaScript, TypeScript, React, Next.js, Tailwind CSS, Python, Cybersecurity, Linux, SQL, Git.
+
+Projects
+Worm Games, Smart Home IoT, Cybersecurity Dashboard, AI Assistant.
