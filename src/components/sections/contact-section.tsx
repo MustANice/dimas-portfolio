@@ -19,9 +19,9 @@ export function ContactSection() {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const name = String(formData.get("name") ?? "");
-    const email = String(formData.get("email") ?? "");
-    const message = String(formData.get("message") ?? "");
+    const name = String(formData.get("name") ?? "").slice(0, 100);
+    const email = String(formData.get("email") ?? "").slice(0, 100);
+    const message = String(formData.get("message") ?? "").slice(0, 1000);
     const body = encodeURIComponent(`${message}\n\nFrom: ${name} <${email}>`);
     window.location.href = `mailto:adhi@dindustries.my.id?subject=Portfolio%20Contact&body=${body}`;
     setStatus("Membuka aplikasi email untuk mengirim pesan.");
@@ -87,6 +87,7 @@ export function ContactSection() {
                     required
                     name="name"
                     autoComplete="name"
+                    maxLength={100}
                     placeholder="Nama kamu"
                     className="min-h-12 rounded-2xl border border-white/10 bg-slate-950/60 px-4 text-base text-white outline-none transition-all duration-300 placeholder:text-slate-600 hover:border-cyan-300/30 focus:border-cyan-300 focus:ring-4 focus:ring-cyan-300/10"
                   />
@@ -98,6 +99,7 @@ export function ContactSection() {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    maxLength={100}
                     placeholder="nama@email.com"
                     className="min-h-12 rounded-2xl border border-white/10 bg-slate-950/60 px-4 text-base text-white outline-none transition-all duration-300 placeholder:text-slate-600 hover:border-cyan-300/30 focus:border-cyan-300 focus:ring-4 focus:ring-cyan-300/10"
                   />
@@ -110,6 +112,7 @@ export function ContactSection() {
                   required
                   name="message"
                   rows={6}
+                  maxLength={1000}
                   placeholder="Ceritakan ide atau pesan kamu..."
                   className="resize-none rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-4 text-base text-white outline-none transition-all duration-300 placeholder:text-slate-600 hover:border-cyan-300/30 focus:border-cyan-300 focus:ring-4 focus:ring-cyan-300/10"
                 />
