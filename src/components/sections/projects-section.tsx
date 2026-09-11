@@ -74,7 +74,7 @@ export function ProjectsSection() {
         <SectionHeading
           eyebrow="Projects"
           title="Project digital dengan arah produk yang bersih dan modern."
-          description="Kumpulan project yang merepresentasikan eksplorasi game, IoT, cybersecurity dashboard, dan AI assistant berbasis web."
+          description="Kumpulan project yang merepresentasikan eksplorasi IoT SCADA, platform web interaktif, cybersecurity dashboard, dan game arcade modern."
         />
 
         <div className="grid gap-5 md:grid-cols-2">
@@ -106,7 +106,7 @@ export function ProjectsSection() {
                       rel={project.href.startsWith("http") ? "noreferrer" : undefined}
                       className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-cyan-300 hover:text-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
                     >
-                      {project.githubUrl ? "Live Demo" : "View Project"}
+                      {project.githubUrl || !project.href.includes("github.com") ? "Live Demo" : "View Project"}
                       <ArrowUpRight size={17} aria-hidden="true" />
                     </Link>
                     {project.githubUrl && (

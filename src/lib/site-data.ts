@@ -1,6 +1,5 @@
 import {
   Atom,
-  Bot,
   BrainCircuit,
   Braces,
   Code2,
@@ -11,6 +10,7 @@ import {
   Github,
   GitBranch,
   GraduationCap,
+  Heart,
   Instagram,
   Layers3,
   Linkedin,
@@ -74,14 +74,6 @@ export const skills: Skill[] = [
 
 export const projects: Project[] = [
   {
-    title: "Worm Games",
-    description: "Game project sederhana dengan konsep arcade modern.",
-    stack: ["JavaScript", "Canvas", "Game Logic"],
-    icon: Gamepad2,
-    href: "https://github.com/MustANice",
-    visual: "arcade",
-  },
-  {
     title: "Smart Oil Tracker",
     description:
       "Industrial SCADA IoT dashboard & GPS fleet tracker untuk monitoring volume oli, kecepatan, dan deteksi pencurian secara real-time.",
@@ -93,6 +85,16 @@ export const projects: Project[] = [
     visual: "iot",
   },
   {
+    title: "Wedding Invitation Platform",
+    description:
+      "Platform undangan pernikahan digital interaktif bertema Warm Archival & Pressed Linen di Plataran Borobudur, dilengkapi background music BGM, RSVP manajemen tamu VIP, dan QR kiosk check-in.",
+    stack: ["TypeScript", "Fastify", "Drizzle ORM", "SQLite", "SSE"],
+    icon: Heart,
+    href: "https://undangan.dindustries.my.id",
+    image: "/projects/wedding-invitation.png",
+    visual: "arcade",
+  },
+  {
     title: "Cybersecurity Dashboard",
     description: "Dashboard monitoring keamanan jaringan dengan tampilan modern.",
     stack: ["Next.js", "Charts", "Network"],
@@ -101,12 +103,12 @@ export const projects: Project[] = [
     visual: "security",
   },
   {
-    title: "AI Assistant",
-    description: "Eksperimen AI assistant berbasis web modern.",
-    stack: ["AI", "React", "API"],
-    icon: Bot,
+    title: "Worm Games",
+    description: "Game project sederhana dengan konsep arcade modern.",
+    stack: ["JavaScript", "Canvas", "Game Logic"],
+    icon: Gamepad2,
     href: "https://github.com/MustANice",
-    visual: "ai",
+    visual: "arcade",
   },
 ];
 
