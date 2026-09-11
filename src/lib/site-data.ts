@@ -41,6 +41,7 @@ export type Project = {
   icon: LucideIcon;
   href: string;
   githubUrl?: string;
+  image?: string;
   visual: "arcade" | "iot" | "security" | "ai";
 };
 
@@ -88,6 +89,7 @@ export const projects: Project[] = [
     icon: Gauge,
     href: "https://smartoil.dindustries.my.id",
     githubUrl: "https://github.com/MustANice/smartoil",
+    image: "/projects/smart-oil-tracker.png",
     visual: "iot",
   },
   {

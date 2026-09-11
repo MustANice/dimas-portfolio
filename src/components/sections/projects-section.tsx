@@ -1,4 +1,5 @@
 import { ArrowUpRight, Github } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/lib/site-data";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -16,6 +17,27 @@ const visualStyles: Record<Project["visual"], string> = {
 
 function ProjectVisual({ project }: { project: Project }) {
   const Icon = project.icon;
+
+  if (project.image) {
+    return (
+      <div
+        className="relative aspect-[16/10] overflow-hidden rounded-t-2xl bg-slate-950"
+        aria-hidden="true"
+      >
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          sizes="(max-width: 768px) 100vw, 560px"
+          className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+        <div className="absolute bottom-3 right-3 grid size-10 place-items-center rounded-xl border border-white/15 bg-slate-950/80 text-cyan-200 shadow-[0_8px_24px_rgba(0,0,0,0.4)] backdrop-blur-md">
+          <Icon size={20} aria-hidden="true" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
