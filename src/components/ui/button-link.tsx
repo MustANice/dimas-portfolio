@@ -20,8 +20,27 @@ export function ButtonLink({
   children,
   className,
   variant = "secondary",
+  onClick,
   ...props
 }: ButtonLinkProps) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = typeof props.href === "string" ? props.href : props.href.pathname;
+    if (href?.startsWith("#")) {
+      e.preventDefault();
+      const targetElement = document.getElementById(href.slice(1));
+      if (targetElement) {
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        targetElement.scrollIntoView({
+          behavior: prefersReducedMotion ? "auto" : "smooth",
+        });
+        window.history.pushState(null, "", href);
+      }
+    }
+    onClick?.(e);
+  };
+
   return (
     <Link
       className={cn(
@@ -29,6 +48,7 @@ export function ButtonLink({
         variants[variant],
         className,
       )}
+      onClick={handleClick}
       {...props}
     >
       {children}

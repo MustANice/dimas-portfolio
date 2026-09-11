@@ -7,10 +7,10 @@ import {
   Cpu,
   Database,
   Gamepad2,
+  Gauge,
   Github,
   GitBranch,
   GraduationCap,
-  Home,
   Instagram,
   Layers3,
   Linkedin,
@@ -40,6 +40,7 @@ export type Project = {
   stack: string[];
   icon: LucideIcon;
   href: string;
+  githubUrl?: string;
   visual: "arcade" | "iot" | "security" | "ai";
 };
 
@@ -80,11 +81,13 @@ export const projects: Project[] = [
     visual: "arcade",
   },
   {
-    title: "Smart Home IoT",
-    description: "Project IoT monitoring dan keamanan rumah menggunakan Arduino.",
-    stack: ["Arduino", "IoT", "Security"],
-    icon: Home,
-    href: "https://github.com/MustANice/smartoil",
+    title: "Smart Oil Tracker",
+    description:
+      "Industrial SCADA IoT dashboard & GPS fleet tracker untuk monitoring volume oli, kecepatan, dan deteksi pencurian secara real-time.",
+    stack: ["IoT", "Node.js", "MQTT", "MySQL", "Socket.IO", "Leaflet"],
+    icon: Gauge,
+    href: "https://smartoil.dindustries.my.id",
+    githubUrl: "https://github.com/MustANice/smartoil",
     visual: "iot",
   },
   {

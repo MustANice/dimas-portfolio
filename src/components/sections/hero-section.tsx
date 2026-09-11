@@ -200,6 +200,15 @@ export function HeroSection() {
 
       <Link
         href="#about"
+        onClick={(e) => {
+          e.preventDefault();
+          const target = document.getElementById("about");
+          if (target) {
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            target.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth" });
+            window.history.pushState(null, "", "#about");
+          }
+        }}
         aria-label="Scroll ke bagian about"
         className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 rounded-full border border-white/10 bg-white/[0.05] p-3 text-slate-300 transition-all hover:-translate-y-1 hover:border-cyan-300/40 hover:text-cyan-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 md:grid"
       >

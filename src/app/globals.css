@@ -14,10 +14,6 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   min-height: 100vh;
   overflow-x: hidden;
@@ -27,6 +23,11 @@ body {
   color: #f8fafc;
   font-family: var(--font-sans);
   letter-spacing: 0;
+}
+
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
 }
 
 button,
@@ -51,13 +52,13 @@ select {
 
 .ambient-flow {
   background:
-    linear-gradient(115deg, transparent 4%, rgba(0, 229, 255, 0.1) 22%, transparent 42%),
-    linear-gradient(245deg, transparent 12%, rgba(16, 185, 129, 0.08) 38%, transparent 62%),
-    linear-gradient(180deg, transparent, rgba(59, 130, 246, 0.08), transparent);
-  background-size: 220% 220%;
-  filter: blur(34px);
+    radial-gradient(ellipse 65% 55% at 20% 30%, rgba(0, 229, 255, 0.12) 0%, rgba(0, 229, 255, 0.03) 50%, transparent 75%),
+    radial-gradient(ellipse 60% 50% at 80% 35%, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.02) 50%, transparent 75%),
+    radial-gradient(ellipse 75% 65% at 50% 85%, rgba(59, 130, 246, 0.09) 0%, transparent 70%);
   opacity: 0.9;
-  animation: ambient-flow 18s ease-in-out infinite alternate;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  animation: ambient-flow 20s ease-in-out infinite alternate;
 }
 
 .scanline {
@@ -71,7 +72,8 @@ select {
   border: 1px solid rgba(148, 163, 184, 0.16);
   background: linear-gradient(135deg, rgba(15, 23, 42, 0.76), rgba(3, 7, 18, 0.52));
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
-  backdrop-filter: blur(22px);
+  backdrop-filter: blur(10px);
+  transform: translateZ(0);
 }
 
 .glow-border {
@@ -110,13 +112,11 @@ select {
 }
 
 @keyframes ambient-flow {
-  from {
-    background-position: 0% 20%;
-    transform: translate3d(-2%, -1%, 0) scale(1.02);
+  0% {
+    transform: translate3d(-1.5%, -1%, 0) scale(1);
   }
-  to {
-    background-position: 100% 80%;
-    transform: translate3d(2%, 1%, 0) scale(1.06);
+  100% {
+    transform: translate3d(1.5%, 1%, 0) scale(1.05);
   }
 }
 

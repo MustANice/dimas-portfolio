@@ -20,3 +20,9 @@ pnpm-debug.log*
 
 # local env files
 .env*
+
+# artifacts & testing
+.playwright-mcp/
+porto-dimas-*.png
+VISUAL_QA_REPORT.md
+

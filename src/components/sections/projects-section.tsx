@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import Link from "next/link";
 import type { Project } from "@/lib/site-data";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -38,7 +38,7 @@ function ProjectVisual({ project }: { project: Project }) {
           />
         ))}
       </div>
-      <div className="absolute left-1/2 top-1/2 grid size-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-3xl border border-white/[0.15] bg-slate-950/60 text-cyan-100 shadow-[0_0_60px_rgba(34,211,238,0.18)] backdrop-blur-xl">
+      <div className="absolute left-1/2 top-1/2 grid size-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-3xl border border-white/[0.15] bg-slate-950/80 text-cyan-100 shadow-[0_0_60px_rgba(34,211,238,0.18)]">
         <Icon size={42} aria-hidden="true" />
       </div>
     </div>
@@ -57,33 +57,49 @@ export function ProjectsSection() {
 
         <div className="grid gap-5 md:grid-cols-2">
           {projects.map((project, index) => (
-            <Reveal key={project.title} delay={index * 0.08}>
-              <GlassCard className="group overflow-hidden p-0">
+            <Reveal key={project.title} delay={index * 0.08} className="h-full">
+              <GlassCard className="group flex h-full flex-col overflow-hidden p-0">
                 <ProjectVisual project={project} />
-                <div className="p-6">
-                  <div className="mb-4 flex flex-wrap gap-2">
-                    {project.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-full border border-cyan-300/[0.18] bg-cyan-300/10 px-3 py-1 text-xs font-semibold text-cyan-100"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                <div className="flex flex-1 flex-col justify-between p-6">
+                  <div>
+                    <div className="mb-4 flex flex-wrap gap-2">
+                      {project.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-full border border-cyan-300/[0.18] bg-cyan-300/10 px-3 py-1 text-xs font-semibold text-cyan-100"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+                    <p className="mt-3 text-base leading-7 text-slate-300">
+                      {project.description}
+                    </p>
                   </div>
-                  <h3 className="text-2xl font-bold text-white">{project.title}</h3>
-                  <p className="mt-3 min-h-14 text-base leading-7 text-slate-300">
-                    {project.description}
-                  </p>
-                  <Link
-                    href={project.href}
-                    target={project.href.startsWith("http") ? "_blank" : undefined}
-                    rel={project.href.startsWith("http") ? "noreferrer" : undefined}
-                    className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-cyan-300 hover:text-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
-                  >
-                    View Project
-                    <ArrowUpRight size={17} aria-hidden="true" />
-                  </Link>
+                  <div className="mt-6 flex flex-wrap items-center gap-3">
+                    <Link
+                      href={project.href}
+                      target={project.href.startsWith("http") ? "_blank" : undefined}
+                      rel={project.href.startsWith("http") ? "noreferrer" : undefined}
+                      className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-cyan-300 hover:text-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                    >
+                      {project.githubUrl ? "Live Demo" : "View Project"}
+                      <ArrowUpRight size={17} aria-hidden="true" />
+                    </Link>
+                    {project.githubUrl && (
+                      <Link
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Source code for ${project.title} on GitHub`}
+                        className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-medium text-slate-300 transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                      >
+                        <Github size={16} aria-hidden="true" />
+                        <span>Source Code</span>
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </GlassCard>
             </Reveal>

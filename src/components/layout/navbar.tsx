@@ -64,6 +64,27 @@ export function Navbar() {
     };
   }, [isOpen]);
 
+  const handleAnchorClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (href.startsWith("#")) {
+      event.preventDefault();
+      const targetId = href.slice(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        targetElement.scrollIntoView({
+          behavior: prefersReducedMotion ? "auto" : "smooth",
+        });
+        window.history.pushState(null, "", href);
+      }
+      setIsOpen(false);
+    }
+  };
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
       <nav
@@ -74,7 +95,7 @@ export function Navbar() {
           href="#home"
           className="group inline-flex items-center gap-2 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
           aria-label="Dimas portfolio home"
-          onClick={() => setIsOpen(false)}
+          onClick={(e) => handleAnchorClick(e, "#home")}
         >
           <span className="grid size-9 place-items-center rounded-full border border-cyan-300/[0.35] bg-cyan-300/10 text-cyan-200 shadow-[0_0_28px_rgba(34,211,238,0.22)] transition-transform duration-300 group-hover:scale-105">
             <ShieldCheck size={18} aria-hidden="true" />
@@ -89,6 +110,7 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={(e) => handleAnchorClick(e, item.href)}
                 className={cn(
                   "rounded-full px-4 py-2 text-sm font-medium text-slate-300 transition-all duration-300 hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300",
                   isActive &&
@@ -103,6 +125,7 @@ export function Navbar() {
 
         <Link
           href="#contact"
+          onClick={(e) => handleAnchorClick(e, "#contact")}
           className="hidden rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 py-2 text-sm font-semibold text-cyan-100 transition-all duration-300 hover:-translate-y-0.5 hover:bg-cyan-300 hover:text-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 lg:inline-flex"
         >
           Let&apos;s Talk
@@ -138,7 +161,7 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => handleAnchorClick(e, item.href)}
                 tabIndex={isOpen ? 0 : -1}
                 className={cn(
                   "rounded-2xl px-4 py-3 text-sm font-medium text-slate-300 transition-colors hover:bg-white/[0.08] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300",
